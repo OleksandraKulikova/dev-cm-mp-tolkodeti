@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#8D7DB9">
+    <meta name="viewport" content="width=device-width, height=device-height">
+    <title>TolkoDeti </title>
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+    <!-- <link rel="preload" href="fonts/bebas_neue_regular.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Roboto.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Robotobold.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="fonts/CenturyGothic-Bold.woff2" as="font" crossorigin="anonymous">
+    -->
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-5.0.2.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!--
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet"> -->
+
+    <script defer src="assets/js/picturefill.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+@font-face {
+    font-family: 'SourceCodePro-Regular';
+    src: url('./assets/fonts/SourceCodePro-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SourceCodePro-ExtraLight';
+    src: url('./assets/fonts/SourceCodePro-ExtraLight.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+
+
+
+
+/*1.btn*/
+
+:root {
+    --btn-py: 15px;
+    --btn-px: 35px;
+    --btn-font-size: 18px;
+    --btn-font-weight: 400;
+    --btn-line-height: 24px;
+    --btn-border-radius: 60px;
+}
+
+</style>
+
+<body>
+    <a href="markup.html" class="markup-link">markup</a>
+
+
+    <header class="container-fluid">
+        <div class="header-logo">
+            <a href="index.html">
+            <img src="assets/img/logo.gif" class="img-fluid" alt="logo">
+        </a>
+        </div>
+        <div class="header-contacts">
+            <span>Харьков, ул. Ромена Роллана, 15А</span>
+            <a href="tel:+380952300009">+38(095)230-00-09</a>
+        </div>
+        <div class="header-nav">
+            <div class="header-nav__language">
+                <a href="#" class="active">RUS</a>
+                <a href="#">UA</a>
+            </div>
+            <a href="#" class="header-nav__callback">
+            БОЛИТ
+            <svg class="svg-zubik"  xmlns="http://www.w3.org/2000/svg" width="64" height="79" viewBox="0 0 64 79" fill="none">
+                <path d="M32.1544 11.2419L29.9715 12.9556C28.7487 13.9156 27.1168 14.1762 25.6557 13.6448L22.0589 12.1239L20.3931 11.518C19.9379 11.3525 19.4951 11.1548 19.0679 10.9266L18.4401 10.5911C17.6317 10.1592 16.744 9.89593 15.8308 9.81735C14.9729 9.74354 14.1089 9.83409 13.285 10.0842L12.7485 10.247C11.7133 10.5612 10.743 11.059 9.88405 11.7167C8.51731 12.7631 7.47846 14.1787 6.8901 15.7964L6.55907 16.7066C6.2421 17.5781 6.0244 18.4826 5.91012 19.4029L5.88684 19.5903C5.61622 21.7695 5.86177 23.9818 6.60365 26.0486L8.85794 32.3287L10.8917 36.4354C11.3347 37.33 11.7031 38.2597 11.993 39.215L13.7356 44.9564L14.2866 47.6194C14.6645 49.4464 14.8915 51.3013 14.9652 53.1655L15.247 60.2995C15.298 61.5904 15.4708 62.8735 15.7629 64.1319L16.7706 68.473C16.9362 69.1861 17.2889 69.8422 17.7923 70.3737C18.2803 70.8889 18.9691 71.1651 19.6779 71.1299L19.822 71.1227C20.3433 71.0968 20.8464 70.9227 21.2723 70.621L21.8852 70.1867C22.7428 69.5791 23.4014 68.7312 23.7779 67.7499L25.2427 63.9323L25.3109 63.7066C26.3022 60.4244 26.7914 57.0111 26.7619 53.5826L26.7301 49.8953L26.9873 47.5711C27.0885 46.6568 27.6333 45.8509 28.4441 45.4163C29.0566 45.0879 29.7695 44.9997 30.4435 45.1687L31.026 45.3148C31.8083 45.5111 32.5185 45.9263 33.0731 46.5118C33.5259 46.9898 33.8612 47.5666 34.0524 48.1966L34.5951 49.985C34.8135 50.7043 34.9646 51.4422 35.0466 52.1894L35.8114 59.1571L35.7938 63.7584C35.7882 65.2164 36.0007 66.6671 36.4241 68.0623L36.6983 68.9658C36.8635 69.5101 37.0949 70.0321 37.3872 70.5201L37.7799 71.1757C37.9298 71.426 38.1215 71.6486 38.3469 71.8339C39.0041 72.3742 39.888 72.5504 40.7022 72.3033L41.2868 72.1258C42.2224 71.8419 43.0069 71.1979 43.4677 70.3355L43.7633 69.7822C44.1899 68.9839 44.4007 68.0881 44.375 67.1834L44.0367 55.2857C43.9646 52.7487 44.1768 50.2117 44.6693 47.722L46.7996 36.9521C47.0839 35.515 47.5058 34.1086 48.0596 32.7524L48.8025 30.9329C50.3039 27.2557 50.4937 23.1738 49.3402 19.3732L49.053 18.4268C48.4103 16.3094 47.2523 14.3846 45.6826 12.825L44.9 12.0475C43.5543 10.7104 41.8459 9.79756 39.9864 9.42204L39.8955 9.40368C37.1704 8.85335 34.3411 9.52523 32.1544 11.2419Z" stroke="#EF7D9A" stroke-width="3"/>
+            </svg>
+        </a>
+            <a href="#" class="header-nav__burger">MENU</a>
+            <div class="header-nav__menu">
+                <div class="header-nav__menu-overlay" data-animate></div>
+                <svg class="header-nav__menu-close" data-animate xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62" fill="none">
+                    <path d="M1 1L60.5 60.5" stroke="black" stroke-width="2" />
+                    <path d="M61 1L1.5 60.5" stroke="black" stroke-width="2" />
+                </svg>
+                <nav class="header-link" data-animate>
+                    <ul>
+                        <li class="active"><a href="about.html">О КЛИНИКЕ</a></li>
+                        <li><a href="services.html">УСЛУГИ</a></li>
+                        <li><a href="price.html">ЦЕНЫ</a></li>
+                        <li><a href="doctors.html">ВРАЧИ</a></li>
+                        <li><a href="vacancies.html">ВАКАНСИИ</a></li>
+                        <li><a href="blog.html">БЛОГ</a></li>
+                        <li><a href="contacts.html">КОНТАКТЫ</a></li>
+                        <li><a href="#">LOREM</a></li>
+                    </ul>
+                </nav>
+                <nav class="menu-contacts" data-animate>
+                    <span>socials</span>
+                    <ul class="socials">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                    <span>address</span>
+                    <address class="address">
+                        <ul>
+                            <li>Харьков, ул. Ромена Роллана, 15А</li>
+                            <li>Харьков, пр. Гагарина 272</li>
+                            <li>Харьков, ул. Сумская 34</li>
+                        </ul>
+                    </address>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="wrapper documents">
+        <div class="page-title">
+            <div class="page-title__item">
+                <a href="#" class="prev-page">
+    <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122" fill="none">
+        <path class="prev-rotate" d="M19.0592 43.2823C25.6325 34.3519 33.3569 25.5951 42.7153 19.6387C52.7295 12.3263 59.8862 11.9159 70.8684 17.0956C88.0108 25.1808 112.584 49.2637 108.577 70.1968C106.116 83.0509 95.7026 90.141 85.8849 97.3103C70.8562 108.285 47.0895 107.089 33.1575 94.4626C23.717 85.9067 18.3655 73.7807 16.3979 61.3425C15.445 55.3187 15.276 48.422 19.0592 43.2823Z" fill="#BACF39"/>
+        <path d="M84.7852 61.1838L36.5917 61.1838" stroke="black"/>
+        <path d="M41.9902 66.6089L36.5907 61.2095L41.9902 55.8099" stroke="black"/>
+    </svg>
+</a>
+                <h1 class="title_1"><i>лицензии</i> <span>и юридическая информация</span> </h1>
+            </div>
+        </div>
+        <div class="bottom-animation">
+            <a href="#">ЛИСТАЙТЕ ВНИЗ</a>
+            <svg class="svg-cat">
+                <use href='assets/img/sprite/sprite.svg#svg-cat'></use>
+            </svg>
+        </div>
+        <section class="section_top">
+            <div class="container">
+                <div class="person_contact">
+                    <div class="person_contact-left">
+                        <h2 class="location_title">
+                Центральное отделение клиники «Только Дети»
+            </h2>
+                        <div class="person_content-info_wrapper">
+                            <div class="person_content-info">
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Юридический адрес
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        68500 Украина,Харьков,
+                                        ул. Клапцова 52, к. 51
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Время работы
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        Пн – пт: с 9:00-20:00
+                                        Сб – вс: с 10:00-18:00
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Реквизиты
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        ИНН: 7716779704
+                                        ОГРН: 1147746787550
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="person_content-info">
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Главный врач
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        Толкачева Дарья Евгеньевна
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Телефоны
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        <a href="tel:+380952300009">
+                                +38 (095) 230-00-09
+                            </a>
+                                        <a href="tel:+380682404480">
+                                +38 (068) 240-44-80
+                            </a>
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Email
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        <a href="mailto:info@tolkodeti.com.ua">
+                            info@tolkodeti.com.ua
+                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person_contact-right">
+                        <a href="#" download="" class="right_item">
+                    <div class="right_item-img">
+                        <img src="assets/img/item-img.png" alt="">
+                    </div>
+                    <p class="right_item-descr">
+                        Положение об организации видеонаблюдения
+                    </p>
+                </a>
+                        <a href="#" download="" class="right_item">
+                    <div class="right_item-img">
+                        <img src="assets/img/item-img.png" alt="">
+                    </div>
+                    <p class="right_item-descr">
+                        Положение об организации видеонаблюдения
+                    </p>
+                </a>
+                        <a href="#" download="" class="right_item">
+                    <div class="right_item-img">
+                        <img src="assets/img/item-img.png" alt="">
+                    </div>
+                    <p class="right_item-descr">
+                        Положение об организации видеонаблюдения
+                    </p>
+                </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="certificates">
+            <div class="container">
+                <h2>Дипломы и сертификаты</h2>
+                <div class="certificates-slick slider-progress">
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section_top">
+            <div class="container">
+                <div class="person_contact">
+                    <div class="person_contact-left">
+                        <h2 class="location_title">
+                отделение клиники "только дети" на алексеевке
+            </h2>
+                        <div class="person_content-info_wrapper">
+                            <div class="person_content-info">
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Юридический адрес
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        68500 Украина,Харьков,
+                                        пр. Науки 288
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Время работы
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        Пн – пт: с 9:00-20:00
+                                        Сб – вс: с 10:00-18:00
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Реквизиты
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        ИНН: 7716779704
+                                        ОГРН: 1147746787550
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="person_content-info">
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Главный врач
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        Черотайкина Анна Александровна
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Телефоны
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        <a href="tel:+380952300009">
+                                +38 (095) 230-55-08
+                            	</a>
+                                        <a href="tel:+380952300009">
+									+38 (095) 230-55-08
+								</a>
+                                    </p>
+                                </div>
+                                <div class="info_item">
+                                    <h5 class="info_item-title">
+                            Email
+                        </h5>
+                                    <p class="info_item-subtitle">
+                                        <a href="mailto:info@tolkodeti.com.ua">
+                            info@tolkodeti.com.ua
+                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="certificates">
+            <div class="container">
+                <h2>Дипломы и сертификаты</h2>
+                <div class="certificates-slick slider-progress">
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                    <div>
+                        <a href="assets/img/img-doctor.jpg" class="fancybox" data-fancybox="gallery" data-caption="Caption #1">
+                    <img src="assets/img/img-doctor.jpg" alt="">
+                </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-row">
+            <a href="index.html" class="footer-row__logo">
+            <img src="assets/img/logo.gif" class="img-fluid" alt="logo">
+        </a>
+            <svg class="footer-row__animation svg-cat" width='300' height='300'>
+                <use href='assets/img/sprite/sprite.svg#svg-cat'></use>
+            </svg>
+            <nav class="footer-row__social">
+                <div class="footer-row__social__title">socials</div>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-copy">
+            <p>© Стоматологический центр Tol’ko Deti</p>
+            <nav>
+                <ul>
+                    <li>Разработка: <a href="#">Kofelatte Studio</a></li>
+                    <li>Дизайн:<a href="#"><img src="assets/img/logo-imd.png" alt=""> IMDStudia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade map" id="map-1" tabindex="-1" aria-labelledby="map-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="title_4">ул. Ромена Роллана 15А </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.048883177108!2d36.21943931571553!3d50.010438979417025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a122110be6c1%3A0x46b5d8759fd3efd4!2z0YPQuy4g0KDQvtC80LXQvdCwINCg0L7Qu9C70LDQvdCwLCAxNdCwLCDQpdCw0YDRjNC60L7Qsiwg0KXQsNGA0YzQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjEwMDA!5e0!3m2!1sru!2sua!4v1641381881584!5m2!1sru!2sua" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade map" id="map-2" tabindex="-1" aria-labelledby="map-2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="title_4">пр. Победы 75 </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.989329514812!2d36.20621941571764!3d50.06776147942448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a43b66d5add3%3A0xab14113051f0391c!2z0L_RgNC-0YHQvy4g0J_QvtCx0LXQtNGLLCA3NSwg0KXQsNGA0YzQutC-0LIsINCl0LDRgNGM0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDYxMDAw!5e0!3m2!1sru!2sua!4v1641382564704!5m2!1sru!2sua" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAppointment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="template-form">
+                        <div class="form-variant">
+                            <div class="row">
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__signature-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="signature" width="267" height="219" viewBox="0 0 267 219" fill="none">
+                                            <path class="path-signature" d="M1 59L56 84L102.5 99.5L135 106.5L164.5 110.5L184.835 111.673C188.606 111.891 192.388 111.811 196.146 111.435L220.5 109L226.803 107.739C230.914 106.917 234.889 105.521 238.611 103.591L239.358 103.203C244.073 100.758 248.261 97.409 251.682 93.3463V93.3463C253.555 91.1219 255.183 88.7021 256.538 86.1287L256.933 85.377C258.639 82.1362 259.971 78.7119 260.903 75.1702L263.117 66.7564C264.037 63.2599 264.625 59.6845 264.874 56.0775L264.933 55.2267C265.309 49.7761 264.825 44.3004 263.5 39V39L262.419 36.2979C260.491 31.4766 257.663 27.0661 254.086 23.3015V23.3015C251.376 20.4487 248.269 18.0014 244.861 16.0351L237 11.5L226 7L219.5 5L203.5 2L195.999 1.44434C192.006 1.14863 187.997 1.18635 184.011 1.55713L168.5 3L156.236 5.65162C152.087 6.54878 148.025 7.81117 144.098 9.42402L128.022 16.0269C124.015 17.6723 120.166 19.6758 116.52 22.013L107.663 27.6905C104.227 29.8929 100.985 32.3833 97.9713 35.1349L95.9946 36.9397C92.6722 39.9732 89.6414 43.3115 86.942 46.9107L79.55 56.7667C77.1873 59.9169 75.0871 63.2557 73.2704 66.7493L69.5 74L65.9916 83.7156C64.0046 89.218 62.6956 94.9421 62.0937 100.761L61.5 106.5V119L62.1754 125.303C62.7234 130.418 63.8494 135.454 65.532 140.315V140.315C66.8415 144.098 68.4821 147.757 70.4348 151.252L72.9746 155.797C75.6494 160.583 78.8801 165.068 82.5686 169.125V169.125C85.5073 172.358 88.7483 175.332 92.2233 177.98L95.0901 180.164C96.6939 181.386 98.3978 182.47 100.184 183.406L105.594 186.24C107.174 187.067 108.932 187.5 110.716 187.5V187.5C112.544 187.5 114.342 187.047 115.951 186.18L120 184L123.884 181.411C127.289 179.141 130.493 176.585 133.463 173.771L138.5 169L147.082 158.437C150.021 154.821 152.601 150.928 154.787 146.813L157.894 140.964C159.295 138.327 160.448 135.566 161.339 132.716V132.716C162.112 130.243 162.684 127.711 163.051 125.146L163.5 122L163.924 118.397C164.307 115.141 164.363 111.854 164.091 108.586L163.877 106.023C163.627 103.023 162.946 100.075 161.855 97.2698L161.558 96.5063C160.526 93.853 159.071 91.3848 157.248 89.1977L156.313 88.0752C155.441 87.0297 154.435 86.1046 153.32 85.3241V85.3241C151.144 83.8008 148.61 82.8676 145.965 82.6158L142.764 82.3109C140.596 82.1044 138.41 82.1557 136.254 82.4637L135.118 82.6261C133.375 82.875 131.652 83.2474 129.962 83.7404L120.5 86.5L110.012 89.9959C106.012 91.3294 102.136 93.0118 98.4302 95.0236L86.5 101.5L79.75 106L73 110.5L62.4092 118.973C59.4745 121.32 56.7331 123.9 54.2116 126.687V126.687C50.4178 130.88 47.1448 135.517 44.4639 140.496L41.5 146L40.6175 148.395C38.8832 153.103 37.8979 158.053 37.6974 163.065L37.673 163.676C37.558 166.551 37.7384 169.43 38.2115 172.269L38.9828 176.897C39.3247 178.948 40.0426 180.918 41.1004 182.708L44.4624 188.398C45.4154 190.011 47.1492 191 49.0224 191V191C49.3402 191 49.6573 190.971 49.9699 190.915L51.6282 190.613C53.8647 190.206 56.0321 189.484 58.0652 188.467L64 185.5L67.7466 182.924C70.5786 180.977 73.2675 178.83 75.7927 176.499L78.5 174L80.2282 172.006C83.4013 168.345 86.1967 164.372 88.572 160.15L89.5 158.5L92.7864 151.422C94.9228 146.82 96.5669 142.006 97.6913 137.058L98.5 133.5L100.572 123.138C101.852 116.742 102.256 110.203 101.774 103.698L100.998 93.2219C100.668 88.7648 99.6848 84.3804 98.0804 80.2089L94.5294 70.9765C93.5332 68.3863 91.776 66.1585 89.4892 64.5863V64.5863C86.6056 62.6038 83.0742 61.7963 79.6156 62.3284L76.6552 62.7838C73.5888 63.2556 70.6625 64.3917 68.081 66.1126L63.0401 69.4733C61.0162 70.8225 59.0963 72.3216 57.2965 73.9578L43.5 86.5L32 99.5L23.4574 112.314C21.8219 114.767 20.3744 117.39 19.1645 120.079V120.079C17.4116 123.974 16.1137 128.125 15.3496 132.327L15.0956 133.724C14.6993 135.904 14.5 138.114 14.5 140.329V140.329C14.5 146.352 15.9731 152.283 18.7909 157.605L20.0536 159.99C22.3111 164.254 25.6547 167.847 29.7462 170.404V170.404C33.525 172.766 37.8228 174.17 42.2671 174.495L47.6052 174.886C53.1611 175.292 58.7456 174.749 64.1186 173.278L71.4238 171.279C76.9548 169.765 82.2851 167.596 87.3015 164.818L96 160L107.298 152.357C111.091 149.792 114.63 146.87 117.868 143.632L125.168 136.332C130.031 131.469 134.172 125.935 137.465 119.897L142.947 109.847C145.96 104.323 148.008 98.3249 149.002 92.1115L151.076 79.1508C151.353 77.4183 151.139 75.6429 150.458 74.0259V74.0259C148.735 69.9321 144.377 67.6072 140.017 68.4551L133.322 69.7568C130.804 70.2465 128.421 71.2753 126.338 72.7726L118.43 78.4563C115.151 80.8132 112.109 83.4835 109.347 86.4295L94.6052 102.154C92.205 104.715 89.9951 107.447 87.9933 110.33L78.5 124L73.0597 134.541C71.3558 137.842 69.91 141.27 68.7352 144.795L67.5782 148.265C66.1961 152.412 65.227 156.684 64.6848 161.021L64.4874 162.601C64.163 165.196 64.0547 167.813 64.1636 170.426L64.3254 174.31C64.441 177.083 65.0266 179.816 66.0573 182.393L66.6344 183.836C67.8565 186.891 69.8624 189.57 72.4498 191.603V191.603C74.4619 193.184 76.7767 194.336 79.2513 194.987L79.8455 195.144C83.2314 196.035 86.7828 196.093 90.196 195.312L95.2984 194.146C100.065 193.057 104.61 191.162 108.739 188.544L114.936 184.614C120.289 181.219 125.169 177.133 129.452 172.461L143.994 156.598C148.312 151.887 151.984 146.622 154.913 140.942L164.11 123.105C166.033 119.375 167.626 115.485 168.872 111.478L176.515 86.8851C177.836 82.6375 178.759 78.2767 179.275 73.8586L181.05 58.6387C181.681 53.2304 181.696 47.7679 181.095 42.3562L180.702 38.8202C180.236 34.6265 179.197 30.5167 177.614 26.6055L172.384 13.6833C171.812 12.2705 170.773 11.0963 169.441 10.3561V10.3561C167.879 9.48854 166.035 9.28385 164.321 9.78792L160.986 10.7689C159.341 11.2527 157.791 12.0155 156.405 13.0239L147.872 19.2292C143.967 22.0692 140.358 25.2948 137.099 28.8573L126.534 40.4047C122.527 44.7848 119.077 49.6436 116.262 54.8705L96 92.5L89.1727 110.327C87.7268 114.102 86.6015 117.993 85.8086 121.957L83.3982 134.009C82.4683 138.658 82 143.388 82 148.129V150.79C82 153.26 82.184 155.726 82.5503 158.169L82.781 159.706C83.2584 162.889 84.1417 165.997 85.4094 168.955V168.955C86.1355 170.649 86.985 172.288 87.951 173.858L90.1889 177.494C90.3956 177.83 90.6409 178.141 90.9198 178.42L91.1779 178.678C91.3913 178.891 91.6376 179.069 91.9074 179.204V179.204C92.2971 179.399 92.7268 179.5 93.1626 179.5H94.0447C95.3204 179.5 96.5682 179.127 97.6347 178.427L107.908 171.685C110.629 169.9 113.16 167.84 115.461 165.539L122.286 158.714C125.091 155.909 127.658 152.878 129.964 149.651L141.5 133.5L148.737 121.558C150.577 118.524 152.189 115.357 153.561 112.085L158 101.5L163.416 85.9291C165.134 80.9911 166.308 75.8806 166.919 70.6882L167.145 68.769C167.713 63.9355 167.791 59.0567 167.375 54.2076L166.868 48.2891C166.623 45.4397 166.043 42.6292 165.139 39.9161L164.116 36.8489C163.708 35.6225 163.126 34.4605 162.391 33.3976L160.338 30.4326C159.485 29.2004 158.157 28.3795 156.673 28.1676V28.1676C155.9 28.0572 155.113 28.1162 154.365 28.3405L152.951 28.7647C151.335 29.2495 149.849 30.0812 148.526 31.1286C147.599 31.8632 146.726 32.5 146.5 32.5C146.1 32.5 138.667 39.5 135 43L128.357 50.2469C125.458 53.4093 122.848 56.8245 120.557 60.4516L118 64.5L112.288 75.9233C110.765 78.9706 109.459 82.1222 108.382 85.3543L104.5 97V97C103.503 99.9911 102.835 103.082 102.507 106.218L99.5 135V151.511C99.5 157.151 100.163 162.771 101.474 168.256L103.399 176.303C104.463 180.753 106.033 185.066 108.079 189.158L109.067 191.133C111.667 196.334 115.193 201.018 119.473 204.955L122.952 208.156C124.638 209.707 126.576 210.961 128.682 211.864V211.864C131.201 212.943 133.913 213.5 136.654 213.5H137.143C140.021 213.5 142.873 212.951 145.545 211.882L147.428 211.129C150.131 210.048 152.68 208.615 155.008 206.869L155.419 206.561C159.431 203.552 162.79 199.759 165.293 195.412L171 185.5L178.5 167C179.667 163 182 154.9 182 154.5C182 154.297 182.343 152.542 182.768 150.448C183.572 146.487 184.08 142.47 184.238 138.432L184.868 122.356C184.956 120.122 184.876 117.884 184.629 115.662V115.662C184.211 111.903 183.319 108.211 181.972 104.676L180 99.5V99.5C177.675 94.8509 174.789 90.5044 171.407 86.5579L170.5 85.5L164.178 78.9602C158.762 73.3572 152.472 68.6707 145.554 65.0835L142.5 63.5L138.682 62.1452C130.951 59.4019 122.808 58 114.604 58H110.954C106.337 58 101.739 58.5899 97.2714 59.7553V59.7553C94.097 60.5834 91.0044 61.698 88.0315 63.0853L85 64.5V64.5C80.7644 67.1065 77.4089 70.9246 75.368 75.4599L75.2115 75.8078C74.4064 77.5969 73.8058 79.4711 73.421 81.3949L71.3982 91.509C70.4683 96.1583 70 100.888 70 105.629V109.872C70 114.943 70.5357 120 71.5982 124.958L73 131.5L78.0215 145.56C79.6669 150.167 81.9033 154.541 84.6748 158.572L88.769 164.528C90.5695 167.146 92.9015 169.357 95.6133 171.014L95.9497 171.219C98.9361 173.044 102.33 174.096 105.825 174.28L106.205 174.3C108.71 174.432 111.218 174.07 113.584 173.235V173.235C116.803 172.099 119.659 170.123 121.858 167.512L124.385 164.511C125.792 162.841 127.032 161.038 128.088 159.127L134.176 148.11C136.056 144.709 137.657 141.161 138.964 137.501L141.365 130.779C143.446 124.951 144.768 118.878 145.296 112.712L147.474 87.3026C147.491 87.1015 147.487 86.8991 147.46 86.699V86.699C147.123 84.1747 143.848 83.3999 142.416 85.5057L138.226 91.6674C138.076 91.8889 137.941 92.1208 137.824 92.3614L130.288 107.792C128.433 111.59 126.916 115.544 125.755 119.608L122.131 132.293C121.045 136.091 120.275 139.972 119.826 143.897L118.5 155.5V158.318C118.5 164.083 119.224 169.825 120.656 175.409L121.069 177.02C122.679 183.297 125.314 189.265 128.87 194.682L129.784 196.075C132.577 200.332 136.025 204.12 140.001 207.301L140.283 207.526C142.754 209.503 145.427 211.214 148.258 212.629L148.512 212.756C152.152 214.576 156.032 215.87 160.037 216.598V216.598C163.334 217.197 166.691 217.409 170.038 217.228L175.008 216.959C180.642 216.654 186.208 215.575 191.548 213.752L197.593 211.688C201.817 210.246 205.687 207.926 208.949 204.881V204.881C210.645 203.298 212.161 201.534 213.47 199.62L218 193L220.564 188.157C221.851 185.726 222.871 183.163 223.607 180.513V180.513C224.532 177.186 225 173.75 225 170.297V168V165.44C225 161.528 224.143 157.663 222.488 154.117L222.074 153.229C221.692 152.411 221.24 151.628 220.722 150.889V150.889C218.948 148.354 216.457 146.407 213.569 145.296L211.5 144.5V144.5C205.203 142.843 198.691 142.147 192.186 142.436L179.5 143L159.5 144.5L145 147L125.921 150.88C119.011 152.286 112.345 154.699 106.136 158.042L102.5 160L97.0732 163.256C95.6947 164.083 94.4047 165.049 93.2235 166.14L90.0656 169.055C89.0407 170.001 88.2886 171.205 87.8878 172.541L87.5772 173.576C87.2065 174.812 87.3213 176.143 87.8984 177.297V177.297C88.2926 178.085 88.8858 178.757 89.6193 179.246L91.6747 180.616C92.5555 181.204 93.4986 181.692 94.4867 182.072L99.5 184C105 185.667 116.1 189.1 116.5 189.5C116.777 189.777 122.845 190.713 128.595 191.538C133.185 192.196 137.83 192.348 142.463 192.139C147.774 191.899 153.425 191.731 154.5 192C156.5 192.5 171 190.5 172.5 190.5C173.7 190.5 184.667 186.5 190 184.5C192.833 183.167 198.7 180.4 199.5 180C200.3 179.6 205.5 176.833 208 175.5" stroke="#979797" stroke-width="2" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <h4 class="title_4">записаться на приём</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__description">
+                                        Не нашли ответа на интересующий вас вопрос? Задайте его онлайн! Наши администраторы и врачи с удовольствием вам помогут!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hello">
+                            ПРИВЕТ,
+                        </div>
+                        <div class="input-box">
+                            <label for="name">меня зовут *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свое имя" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">моя фамилия *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свою фамилию" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">мой номер телефона *</label>
+                            <input type="tel" name="name" id="name" placeholder="Мой номер телефона" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">Причина обращения *</label>
+                            <textarea class="textarea" type="text" name="name" id="name" placeholder="Причина обращения" required></textarea>
+                        </div>
+                        <div class="btn-box">
+                            <input type="submit" value="записаться на приём" class="btn btn-secondary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalConsultation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="template-form">
+                        <div class="form-variant">
+                            <div class="row">
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__signature-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="signature" width="267" height="219" viewBox="0 0 267 219" fill="none">
+                                            <path class="path-signature" d="M1 59L56 84L102.5 99.5L135 106.5L164.5 110.5L184.835 111.673C188.606 111.891 192.388 111.811 196.146 111.435L220.5 109L226.803 107.739C230.914 106.917 234.889 105.521 238.611 103.591L239.358 103.203C244.073 100.758 248.261 97.409 251.682 93.3463V93.3463C253.555 91.1219 255.183 88.7021 256.538 86.1287L256.933 85.377C258.639 82.1362 259.971 78.7119 260.903 75.1702L263.117 66.7564C264.037 63.2599 264.625 59.6845 264.874 56.0775L264.933 55.2267C265.309 49.7761 264.825 44.3004 263.5 39V39L262.419 36.2979C260.491 31.4766 257.663 27.0661 254.086 23.3015V23.3015C251.376 20.4487 248.269 18.0014 244.861 16.0351L237 11.5L226 7L219.5 5L203.5 2L195.999 1.44434C192.006 1.14863 187.997 1.18635 184.011 1.55713L168.5 3L156.236 5.65162C152.087 6.54878 148.025 7.81117 144.098 9.42402L128.022 16.0269C124.015 17.6723 120.166 19.6758 116.52 22.013L107.663 27.6905C104.227 29.8929 100.985 32.3833 97.9713 35.1349L95.9946 36.9397C92.6722 39.9732 89.6414 43.3115 86.942 46.9107L79.55 56.7667C77.1873 59.9169 75.0871 63.2557 73.2704 66.7493L69.5 74L65.9916 83.7156C64.0046 89.218 62.6956 94.9421 62.0937 100.761L61.5 106.5V119L62.1754 125.303C62.7234 130.418 63.8494 135.454 65.532 140.315V140.315C66.8415 144.098 68.4821 147.757 70.4348 151.252L72.9746 155.797C75.6494 160.583 78.8801 165.068 82.5686 169.125V169.125C85.5073 172.358 88.7483 175.332 92.2233 177.98L95.0901 180.164C96.6939 181.386 98.3978 182.47 100.184 183.406L105.594 186.24C107.174 187.067 108.932 187.5 110.716 187.5V187.5C112.544 187.5 114.342 187.047 115.951 186.18L120 184L123.884 181.411C127.289 179.141 130.493 176.585 133.463 173.771L138.5 169L147.082 158.437C150.021 154.821 152.601 150.928 154.787 146.813L157.894 140.964C159.295 138.327 160.448 135.566 161.339 132.716V132.716C162.112 130.243 162.684 127.711 163.051 125.146L163.5 122L163.924 118.397C164.307 115.141 164.363 111.854 164.091 108.586L163.877 106.023C163.627 103.023 162.946 100.075 161.855 97.2698L161.558 96.5063C160.526 93.853 159.071 91.3848 157.248 89.1977L156.313 88.0752C155.441 87.0297 154.435 86.1046 153.32 85.3241V85.3241C151.144 83.8008 148.61 82.8676 145.965 82.6158L142.764 82.3109C140.596 82.1044 138.41 82.1557 136.254 82.4637L135.118 82.6261C133.375 82.875 131.652 83.2474 129.962 83.7404L120.5 86.5L110.012 89.9959C106.012 91.3294 102.136 93.0118 98.4302 95.0236L86.5 101.5L79.75 106L73 110.5L62.4092 118.973C59.4745 121.32 56.7331 123.9 54.2116 126.687V126.687C50.4178 130.88 47.1448 135.517 44.4639 140.496L41.5 146L40.6175 148.395C38.8832 153.103 37.8979 158.053 37.6974 163.065L37.673 163.676C37.558 166.551 37.7384 169.43 38.2115 172.269L38.9828 176.897C39.3247 178.948 40.0426 180.918 41.1004 182.708L44.4624 188.398C45.4154 190.011 47.1492 191 49.0224 191V191C49.3402 191 49.6573 190.971 49.9699 190.915L51.6282 190.613C53.8647 190.206 56.0321 189.484 58.0652 188.467L64 185.5L67.7466 182.924C70.5786 180.977 73.2675 178.83 75.7927 176.499L78.5 174L80.2282 172.006C83.4013 168.345 86.1967 164.372 88.572 160.15L89.5 158.5L92.7864 151.422C94.9228 146.82 96.5669 142.006 97.6913 137.058L98.5 133.5L100.572 123.138C101.852 116.742 102.256 110.203 101.774 103.698L100.998 93.2219C100.668 88.7648 99.6848 84.3804 98.0804 80.2089L94.5294 70.9765C93.5332 68.3863 91.776 66.1585 89.4892 64.5863V64.5863C86.6056 62.6038 83.0742 61.7963 79.6156 62.3284L76.6552 62.7838C73.5888 63.2556 70.6625 64.3917 68.081 66.1126L63.0401 69.4733C61.0162 70.8225 59.0963 72.3216 57.2965 73.9578L43.5 86.5L32 99.5L23.4574 112.314C21.8219 114.767 20.3744 117.39 19.1645 120.079V120.079C17.4116 123.974 16.1137 128.125 15.3496 132.327L15.0956 133.724C14.6993 135.904 14.5 138.114 14.5 140.329V140.329C14.5 146.352 15.9731 152.283 18.7909 157.605L20.0536 159.99C22.3111 164.254 25.6547 167.847 29.7462 170.404V170.404C33.525 172.766 37.8228 174.17 42.2671 174.495L47.6052 174.886C53.1611 175.292 58.7456 174.749 64.1186 173.278L71.4238 171.279C76.9548 169.765 82.2851 167.596 87.3015 164.818L96 160L107.298 152.357C111.091 149.792 114.63 146.87 117.868 143.632L125.168 136.332C130.031 131.469 134.172 125.935 137.465 119.897L142.947 109.847C145.96 104.323 148.008 98.3249 149.002 92.1115L151.076 79.1508C151.353 77.4183 151.139 75.6429 150.458 74.0259V74.0259C148.735 69.9321 144.377 67.6072 140.017 68.4551L133.322 69.7568C130.804 70.2465 128.421 71.2753 126.338 72.7726L118.43 78.4563C115.151 80.8132 112.109 83.4835 109.347 86.4295L94.6052 102.154C92.205 104.715 89.9951 107.447 87.9933 110.33L78.5 124L73.0597 134.541C71.3558 137.842 69.91 141.27 68.7352 144.795L67.5782 148.265C66.1961 152.412 65.227 156.684 64.6848 161.021L64.4874 162.601C64.163 165.196 64.0547 167.813 64.1636 170.426L64.3254 174.31C64.441 177.083 65.0266 179.816 66.0573 182.393L66.6344 183.836C67.8565 186.891 69.8624 189.57 72.4498 191.603V191.603C74.4619 193.184 76.7767 194.336 79.2513 194.987L79.8455 195.144C83.2314 196.035 86.7828 196.093 90.196 195.312L95.2984 194.146C100.065 193.057 104.61 191.162 108.739 188.544L114.936 184.614C120.289 181.219 125.169 177.133 129.452 172.461L143.994 156.598C148.312 151.887 151.984 146.622 154.913 140.942L164.11 123.105C166.033 119.375 167.626 115.485 168.872 111.478L176.515 86.8851C177.836 82.6375 178.759 78.2767 179.275 73.8586L181.05 58.6387C181.681 53.2304 181.696 47.7679 181.095 42.3562L180.702 38.8202C180.236 34.6265 179.197 30.5167 177.614 26.6055L172.384 13.6833C171.812 12.2705 170.773 11.0963 169.441 10.3561V10.3561C167.879 9.48854 166.035 9.28385 164.321 9.78792L160.986 10.7689C159.341 11.2527 157.791 12.0155 156.405 13.0239L147.872 19.2292C143.967 22.0692 140.358 25.2948 137.099 28.8573L126.534 40.4047C122.527 44.7848 119.077 49.6436 116.262 54.8705L96 92.5L89.1727 110.327C87.7268 114.102 86.6015 117.993 85.8086 121.957L83.3982 134.009C82.4683 138.658 82 143.388 82 148.129V150.79C82 153.26 82.184 155.726 82.5503 158.169L82.781 159.706C83.2584 162.889 84.1417 165.997 85.4094 168.955V168.955C86.1355 170.649 86.985 172.288 87.951 173.858L90.1889 177.494C90.3956 177.83 90.6409 178.141 90.9198 178.42L91.1779 178.678C91.3913 178.891 91.6376 179.069 91.9074 179.204V179.204C92.2971 179.399 92.7268 179.5 93.1626 179.5H94.0447C95.3204 179.5 96.5682 179.127 97.6347 178.427L107.908 171.685C110.629 169.9 113.16 167.84 115.461 165.539L122.286 158.714C125.091 155.909 127.658 152.878 129.964 149.651L141.5 133.5L148.737 121.558C150.577 118.524 152.189 115.357 153.561 112.085L158 101.5L163.416 85.9291C165.134 80.9911 166.308 75.8806 166.919 70.6882L167.145 68.769C167.713 63.9355 167.791 59.0567 167.375 54.2076L166.868 48.2891C166.623 45.4397 166.043 42.6292 165.139 39.9161L164.116 36.8489C163.708 35.6225 163.126 34.4605 162.391 33.3976L160.338 30.4326C159.485 29.2004 158.157 28.3795 156.673 28.1676V28.1676C155.9 28.0572 155.113 28.1162 154.365 28.3405L152.951 28.7647C151.335 29.2495 149.849 30.0812 148.526 31.1286C147.599 31.8632 146.726 32.5 146.5 32.5C146.1 32.5 138.667 39.5 135 43L128.357 50.2469C125.458 53.4093 122.848 56.8245 120.557 60.4516L118 64.5L112.288 75.9233C110.765 78.9706 109.459 82.1222 108.382 85.3543L104.5 97V97C103.503 99.9911 102.835 103.082 102.507 106.218L99.5 135V151.511C99.5 157.151 100.163 162.771 101.474 168.256L103.399 176.303C104.463 180.753 106.033 185.066 108.079 189.158L109.067 191.133C111.667 196.334 115.193 201.018 119.473 204.955L122.952 208.156C124.638 209.707 126.576 210.961 128.682 211.864V211.864C131.201 212.943 133.913 213.5 136.654 213.5H137.143C140.021 213.5 142.873 212.951 145.545 211.882L147.428 211.129C150.131 210.048 152.68 208.615 155.008 206.869L155.419 206.561C159.431 203.552 162.79 199.759 165.293 195.412L171 185.5L178.5 167C179.667 163 182 154.9 182 154.5C182 154.297 182.343 152.542 182.768 150.448C183.572 146.487 184.08 142.47 184.238 138.432L184.868 122.356C184.956 120.122 184.876 117.884 184.629 115.662V115.662C184.211 111.903 183.319 108.211 181.972 104.676L180 99.5V99.5C177.675 94.8509 174.789 90.5044 171.407 86.5579L170.5 85.5L164.178 78.9602C158.762 73.3572 152.472 68.6707 145.554 65.0835L142.5 63.5L138.682 62.1452C130.951 59.4019 122.808 58 114.604 58H110.954C106.337 58 101.739 58.5899 97.2714 59.7553V59.7553C94.097 60.5834 91.0044 61.698 88.0315 63.0853L85 64.5V64.5C80.7644 67.1065 77.4089 70.9246 75.368 75.4599L75.2115 75.8078C74.4064 77.5969 73.8058 79.4711 73.421 81.3949L71.3982 91.509C70.4683 96.1583 70 100.888 70 105.629V109.872C70 114.943 70.5357 120 71.5982 124.958L73 131.5L78.0215 145.56C79.6669 150.167 81.9033 154.541 84.6748 158.572L88.769 164.528C90.5695 167.146 92.9015 169.357 95.6133 171.014L95.9497 171.219C98.9361 173.044 102.33 174.096 105.825 174.28L106.205 174.3C108.71 174.432 111.218 174.07 113.584 173.235V173.235C116.803 172.099 119.659 170.123 121.858 167.512L124.385 164.511C125.792 162.841 127.032 161.038 128.088 159.127L134.176 148.11C136.056 144.709 137.657 141.161 138.964 137.501L141.365 130.779C143.446 124.951 144.768 118.878 145.296 112.712L147.474 87.3026C147.491 87.1015 147.487 86.8991 147.46 86.699V86.699C147.123 84.1747 143.848 83.3999 142.416 85.5057L138.226 91.6674C138.076 91.8889 137.941 92.1208 137.824 92.3614L130.288 107.792C128.433 111.59 126.916 115.544 125.755 119.608L122.131 132.293C121.045 136.091 120.275 139.972 119.826 143.897L118.5 155.5V158.318C118.5 164.083 119.224 169.825 120.656 175.409L121.069 177.02C122.679 183.297 125.314 189.265 128.87 194.682L129.784 196.075C132.577 200.332 136.025 204.12 140.001 207.301L140.283 207.526C142.754 209.503 145.427 211.214 148.258 212.629L148.512 212.756C152.152 214.576 156.032 215.87 160.037 216.598V216.598C163.334 217.197 166.691 217.409 170.038 217.228L175.008 216.959C180.642 216.654 186.208 215.575 191.548 213.752L197.593 211.688C201.817 210.246 205.687 207.926 208.949 204.881V204.881C210.645 203.298 212.161 201.534 213.47 199.62L218 193L220.564 188.157C221.851 185.726 222.871 183.163 223.607 180.513V180.513C224.532 177.186 225 173.75 225 170.297V168V165.44C225 161.528 224.143 157.663 222.488 154.117L222.074 153.229C221.692 152.411 221.24 151.628 220.722 150.889V150.889C218.948 148.354 216.457 146.407 213.569 145.296L211.5 144.5V144.5C205.203 142.843 198.691 142.147 192.186 142.436L179.5 143L159.5 144.5L145 147L125.921 150.88C119.011 152.286 112.345 154.699 106.136 158.042L102.5 160L97.0732 163.256C95.6947 164.083 94.4047 165.049 93.2235 166.14L90.0656 169.055C89.0407 170.001 88.2886 171.205 87.8878 172.541L87.5772 173.576C87.2065 174.812 87.3213 176.143 87.8984 177.297V177.297C88.2926 178.085 88.8858 178.757 89.6193 179.246L91.6747 180.616C92.5555 181.204 93.4986 181.692 94.4867 182.072L99.5 184C105 185.667 116.1 189.1 116.5 189.5C116.777 189.777 122.845 190.713 128.595 191.538C133.185 192.196 137.83 192.348 142.463 192.139C147.774 191.899 153.425 191.731 154.5 192C156.5 192.5 171 190.5 172.5 190.5C173.7 190.5 184.667 186.5 190 184.5C192.833 183.167 198.7 180.4 199.5 180C200.3 179.6 205.5 176.833 208 175.5" stroke="#979797" stroke-width="2" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <h4 class="title_4">онлайн-консультация</h4>
+                                        <!--<a href="#" class="btn btn-secondary">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 649 152" fill="none">
+										<path class="path-btn " d="M3 62.0466C3 135.498 286.74 127.397 369.812 127.397C452.884 127.397 646 119.295 646 62.0466C646 4.7978 405.414 3.17755 357.945 3.17755C310.475 3.17755 20.8012 -3.30345 20.8012 62.0466C20.8012 127.397 391.929 149 458.818 149C525.707 149 634.133 120.916 624.423 62.0466C614.713 3.17755 -94.0973 -38.4086 40.2206 115.515C79.599 153.321 875.258 197.068 579.111 3.17755" stroke="#EF7D9A" stroke-width="5"></path>
+									</svg>
+									записаться на приём
+							   </a>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__description">
+                                        Не нашли ответа на интересующий вас вопрос? Задайте его онлайн! Наши администраторы и врачи с удовольствием вам помогут!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hello">
+                            ПРИВЕТ,
+                        </div>
+                        <div class="input-box">
+                            <label for="name">меня зовут *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свое имя" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">моя фамилия *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свою фамилию" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">мой номер телефона </label>
+                            <input type="tel" name="name" id="name" placeholder="Введите Ваш телефон" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">мой email *</label>
+                            <input type="email" name="name" id="name" placeholder="Введите Email" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">Мой вопрос *</label>
+                            <textarea class="textarea" type="text" name="name" id="name" placeholder="Введите вопрос" required></textarea>
+                        </div>
+                        <div class="btn-box">
+                            <input type="submit" value="записаться на приём" class="btn btn-secondary">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade pricelist" id="modalPricelist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="title_2">
+					Получить прайс-лист
+					<img src="assets/img/envelope.png" alt="">
+				</h2>
+                    <p>Укажите ваш email, и мы вышлем на него актуальный прайс-лист со всеми услугами клиники</p>
+                    <form class="template-form">
+                        <div class="input-box">
+                            <label for="name">меня зовут *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свое имя" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">моя почта *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свою почту" required />
+                        </div>
+                        <div class="btn-box">
+                            <input type="submit" value="получить прайс" class="btn btn-secondary"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade resume" id="modalResume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="template-form">
+                        <div class="form-variant">
+                            <div class="row">
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__signature-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="signature" width="267" height="219" viewBox="0 0 267 219" fill="none">
+                                            <path class="path-signature" d="M1 59L56 84L102.5 99.5L135 106.5L164.5 110.5L184.835 111.673C188.606 111.891 192.388 111.811 196.146 111.435L220.5 109L226.803 107.739C230.914 106.917 234.889 105.521 238.611 103.591L239.358 103.203C244.073 100.758 248.261 97.409 251.682 93.3463V93.3463C253.555 91.1219 255.183 88.7021 256.538 86.1287L256.933 85.377C258.639 82.1362 259.971 78.7119 260.903 75.1702L263.117 66.7564C264.037 63.2599 264.625 59.6845 264.874 56.0775L264.933 55.2267C265.309 49.7761 264.825 44.3004 263.5 39V39L262.419 36.2979C260.491 31.4766 257.663 27.0661 254.086 23.3015V23.3015C251.376 20.4487 248.269 18.0014 244.861 16.0351L237 11.5L226 7L219.5 5L203.5 2L195.999 1.44434C192.006 1.14863 187.997 1.18635 184.011 1.55713L168.5 3L156.236 5.65162C152.087 6.54878 148.025 7.81117 144.098 9.42402L128.022 16.0269C124.015 17.6723 120.166 19.6758 116.52 22.013L107.663 27.6905C104.227 29.8929 100.985 32.3833 97.9713 35.1349L95.9946 36.9397C92.6722 39.9732 89.6414 43.3115 86.942 46.9107L79.55 56.7667C77.1873 59.9169 75.0871 63.2557 73.2704 66.7493L69.5 74L65.9916 83.7156C64.0046 89.218 62.6956 94.9421 62.0937 100.761L61.5 106.5V119L62.1754 125.303C62.7234 130.418 63.8494 135.454 65.532 140.315V140.315C66.8415 144.098 68.4821 147.757 70.4348 151.252L72.9746 155.797C75.6494 160.583 78.8801 165.068 82.5686 169.125V169.125C85.5073 172.358 88.7483 175.332 92.2233 177.98L95.0901 180.164C96.6939 181.386 98.3978 182.47 100.184 183.406L105.594 186.24C107.174 187.067 108.932 187.5 110.716 187.5V187.5C112.544 187.5 114.342 187.047 115.951 186.18L120 184L123.884 181.411C127.289 179.141 130.493 176.585 133.463 173.771L138.5 169L147.082 158.437C150.021 154.821 152.601 150.928 154.787 146.813L157.894 140.964C159.295 138.327 160.448 135.566 161.339 132.716V132.716C162.112 130.243 162.684 127.711 163.051 125.146L163.5 122L163.924 118.397C164.307 115.141 164.363 111.854 164.091 108.586L163.877 106.023C163.627 103.023 162.946 100.075 161.855 97.2698L161.558 96.5063C160.526 93.853 159.071 91.3848 157.248 89.1977L156.313 88.0752C155.441 87.0297 154.435 86.1046 153.32 85.3241V85.3241C151.144 83.8008 148.61 82.8676 145.965 82.6158L142.764 82.3109C140.596 82.1044 138.41 82.1557 136.254 82.4637L135.118 82.6261C133.375 82.875 131.652 83.2474 129.962 83.7404L120.5 86.5L110.012 89.9959C106.012 91.3294 102.136 93.0118 98.4302 95.0236L86.5 101.5L79.75 106L73 110.5L62.4092 118.973C59.4745 121.32 56.7331 123.9 54.2116 126.687V126.687C50.4178 130.88 47.1448 135.517 44.4639 140.496L41.5 146L40.6175 148.395C38.8832 153.103 37.8979 158.053 37.6974 163.065L37.673 163.676C37.558 166.551 37.7384 169.43 38.2115 172.269L38.9828 176.897C39.3247 178.948 40.0426 180.918 41.1004 182.708L44.4624 188.398C45.4154 190.011 47.1492 191 49.0224 191V191C49.3402 191 49.6573 190.971 49.9699 190.915L51.6282 190.613C53.8647 190.206 56.0321 189.484 58.0652 188.467L64 185.5L67.7466 182.924C70.5786 180.977 73.2675 178.83 75.7927 176.499L78.5 174L80.2282 172.006C83.4013 168.345 86.1967 164.372 88.572 160.15L89.5 158.5L92.7864 151.422C94.9228 146.82 96.5669 142.006 97.6913 137.058L98.5 133.5L100.572 123.138C101.852 116.742 102.256 110.203 101.774 103.698L100.998 93.2219C100.668 88.7648 99.6848 84.3804 98.0804 80.2089L94.5294 70.9765C93.5332 68.3863 91.776 66.1585 89.4892 64.5863V64.5863C86.6056 62.6038 83.0742 61.7963 79.6156 62.3284L76.6552 62.7838C73.5888 63.2556 70.6625 64.3917 68.081 66.1126L63.0401 69.4733C61.0162 70.8225 59.0963 72.3216 57.2965 73.9578L43.5 86.5L32 99.5L23.4574 112.314C21.8219 114.767 20.3744 117.39 19.1645 120.079V120.079C17.4116 123.974 16.1137 128.125 15.3496 132.327L15.0956 133.724C14.6993 135.904 14.5 138.114 14.5 140.329V140.329C14.5 146.352 15.9731 152.283 18.7909 157.605L20.0536 159.99C22.3111 164.254 25.6547 167.847 29.7462 170.404V170.404C33.525 172.766 37.8228 174.17 42.2671 174.495L47.6052 174.886C53.1611 175.292 58.7456 174.749 64.1186 173.278L71.4238 171.279C76.9548 169.765 82.2851 167.596 87.3015 164.818L96 160L107.298 152.357C111.091 149.792 114.63 146.87 117.868 143.632L125.168 136.332C130.031 131.469 134.172 125.935 137.465 119.897L142.947 109.847C145.96 104.323 148.008 98.3249 149.002 92.1115L151.076 79.1508C151.353 77.4183 151.139 75.6429 150.458 74.0259V74.0259C148.735 69.9321 144.377 67.6072 140.017 68.4551L133.322 69.7568C130.804 70.2465 128.421 71.2753 126.338 72.7726L118.43 78.4563C115.151 80.8132 112.109 83.4835 109.347 86.4295L94.6052 102.154C92.205 104.715 89.9951 107.447 87.9933 110.33L78.5 124L73.0597 134.541C71.3558 137.842 69.91 141.27 68.7352 144.795L67.5782 148.265C66.1961 152.412 65.227 156.684 64.6848 161.021L64.4874 162.601C64.163 165.196 64.0547 167.813 64.1636 170.426L64.3254 174.31C64.441 177.083 65.0266 179.816 66.0573 182.393L66.6344 183.836C67.8565 186.891 69.8624 189.57 72.4498 191.603V191.603C74.4619 193.184 76.7767 194.336 79.2513 194.987L79.8455 195.144C83.2314 196.035 86.7828 196.093 90.196 195.312L95.2984 194.146C100.065 193.057 104.61 191.162 108.739 188.544L114.936 184.614C120.289 181.219 125.169 177.133 129.452 172.461L143.994 156.598C148.312 151.887 151.984 146.622 154.913 140.942L164.11 123.105C166.033 119.375 167.626 115.485 168.872 111.478L176.515 86.8851C177.836 82.6375 178.759 78.2767 179.275 73.8586L181.05 58.6387C181.681 53.2304 181.696 47.7679 181.095 42.3562L180.702 38.8202C180.236 34.6265 179.197 30.5167 177.614 26.6055L172.384 13.6833C171.812 12.2705 170.773 11.0963 169.441 10.3561V10.3561C167.879 9.48854 166.035 9.28385 164.321 9.78792L160.986 10.7689C159.341 11.2527 157.791 12.0155 156.405 13.0239L147.872 19.2292C143.967 22.0692 140.358 25.2948 137.099 28.8573L126.534 40.4047C122.527 44.7848 119.077 49.6436 116.262 54.8705L96 92.5L89.1727 110.327C87.7268 114.102 86.6015 117.993 85.8086 121.957L83.3982 134.009C82.4683 138.658 82 143.388 82 148.129V150.79C82 153.26 82.184 155.726 82.5503 158.169L82.781 159.706C83.2584 162.889 84.1417 165.997 85.4094 168.955V168.955C86.1355 170.649 86.985 172.288 87.951 173.858L90.1889 177.494C90.3956 177.83 90.6409 178.141 90.9198 178.42L91.1779 178.678C91.3913 178.891 91.6376 179.069 91.9074 179.204V179.204C92.2971 179.399 92.7268 179.5 93.1626 179.5H94.0447C95.3204 179.5 96.5682 179.127 97.6347 178.427L107.908 171.685C110.629 169.9 113.16 167.84 115.461 165.539L122.286 158.714C125.091 155.909 127.658 152.878 129.964 149.651L141.5 133.5L148.737 121.558C150.577 118.524 152.189 115.357 153.561 112.085L158 101.5L163.416 85.9291C165.134 80.9911 166.308 75.8806 166.919 70.6882L167.145 68.769C167.713 63.9355 167.791 59.0567 167.375 54.2076L166.868 48.2891C166.623 45.4397 166.043 42.6292 165.139 39.9161L164.116 36.8489C163.708 35.6225 163.126 34.4605 162.391 33.3976L160.338 30.4326C159.485 29.2004 158.157 28.3795 156.673 28.1676V28.1676C155.9 28.0572 155.113 28.1162 154.365 28.3405L152.951 28.7647C151.335 29.2495 149.849 30.0812 148.526 31.1286C147.599 31.8632 146.726 32.5 146.5 32.5C146.1 32.5 138.667 39.5 135 43L128.357 50.2469C125.458 53.4093 122.848 56.8245 120.557 60.4516L118 64.5L112.288 75.9233C110.765 78.9706 109.459 82.1222 108.382 85.3543L104.5 97V97C103.503 99.9911 102.835 103.082 102.507 106.218L99.5 135V151.511C99.5 157.151 100.163 162.771 101.474 168.256L103.399 176.303C104.463 180.753 106.033 185.066 108.079 189.158L109.067 191.133C111.667 196.334 115.193 201.018 119.473 204.955L122.952 208.156C124.638 209.707 126.576 210.961 128.682 211.864V211.864C131.201 212.943 133.913 213.5 136.654 213.5H137.143C140.021 213.5 142.873 212.951 145.545 211.882L147.428 211.129C150.131 210.048 152.68 208.615 155.008 206.869L155.419 206.561C159.431 203.552 162.79 199.759 165.293 195.412L171 185.5L178.5 167C179.667 163 182 154.9 182 154.5C182 154.297 182.343 152.542 182.768 150.448C183.572 146.487 184.08 142.47 184.238 138.432L184.868 122.356C184.956 120.122 184.876 117.884 184.629 115.662V115.662C184.211 111.903 183.319 108.211 181.972 104.676L180 99.5V99.5C177.675 94.8509 174.789 90.5044 171.407 86.5579L170.5 85.5L164.178 78.9602C158.762 73.3572 152.472 68.6707 145.554 65.0835L142.5 63.5L138.682 62.1452C130.951 59.4019 122.808 58 114.604 58H110.954C106.337 58 101.739 58.5899 97.2714 59.7553V59.7553C94.097 60.5834 91.0044 61.698 88.0315 63.0853L85 64.5V64.5C80.7644 67.1065 77.4089 70.9246 75.368 75.4599L75.2115 75.8078C74.4064 77.5969 73.8058 79.4711 73.421 81.3949L71.3982 91.509C70.4683 96.1583 70 100.888 70 105.629V109.872C70 114.943 70.5357 120 71.5982 124.958L73 131.5L78.0215 145.56C79.6669 150.167 81.9033 154.541 84.6748 158.572L88.769 164.528C90.5695 167.146 92.9015 169.357 95.6133 171.014L95.9497 171.219C98.9361 173.044 102.33 174.096 105.825 174.28L106.205 174.3C108.71 174.432 111.218 174.07 113.584 173.235V173.235C116.803 172.099 119.659 170.123 121.858 167.512L124.385 164.511C125.792 162.841 127.032 161.038 128.088 159.127L134.176 148.11C136.056 144.709 137.657 141.161 138.964 137.501L141.365 130.779C143.446 124.951 144.768 118.878 145.296 112.712L147.474 87.3026C147.491 87.1015 147.487 86.8991 147.46 86.699V86.699C147.123 84.1747 143.848 83.3999 142.416 85.5057L138.226 91.6674C138.076 91.8889 137.941 92.1208 137.824 92.3614L130.288 107.792C128.433 111.59 126.916 115.544 125.755 119.608L122.131 132.293C121.045 136.091 120.275 139.972 119.826 143.897L118.5 155.5V158.318C118.5 164.083 119.224 169.825 120.656 175.409L121.069 177.02C122.679 183.297 125.314 189.265 128.87 194.682L129.784 196.075C132.577 200.332 136.025 204.12 140.001 207.301L140.283 207.526C142.754 209.503 145.427 211.214 148.258 212.629L148.512 212.756C152.152 214.576 156.032 215.87 160.037 216.598V216.598C163.334 217.197 166.691 217.409 170.038 217.228L175.008 216.959C180.642 216.654 186.208 215.575 191.548 213.752L197.593 211.688C201.817 210.246 205.687 207.926 208.949 204.881V204.881C210.645 203.298 212.161 201.534 213.47 199.62L218 193L220.564 188.157C221.851 185.726 222.871 183.163 223.607 180.513V180.513C224.532 177.186 225 173.75 225 170.297V168V165.44C225 161.528 224.143 157.663 222.488 154.117L222.074 153.229C221.692 152.411 221.24 151.628 220.722 150.889V150.889C218.948 148.354 216.457 146.407 213.569 145.296L211.5 144.5V144.5C205.203 142.843 198.691 142.147 192.186 142.436L179.5 143L159.5 144.5L145 147L125.921 150.88C119.011 152.286 112.345 154.699 106.136 158.042L102.5 160L97.0732 163.256C95.6947 164.083 94.4047 165.049 93.2235 166.14L90.0656 169.055C89.0407 170.001 88.2886 171.205 87.8878 172.541L87.5772 173.576C87.2065 174.812 87.3213 176.143 87.8984 177.297V177.297C88.2926 178.085 88.8858 178.757 89.6193 179.246L91.6747 180.616C92.5555 181.204 93.4986 181.692 94.4867 182.072L99.5 184C105 185.667 116.1 189.1 116.5 189.5C116.777 189.777 122.845 190.713 128.595 191.538C133.185 192.196 137.83 192.348 142.463 192.139C147.774 191.899 153.425 191.731 154.5 192C156.5 192.5 171 190.5 172.5 190.5C173.7 190.5 184.667 186.5 190 184.5C192.833 183.167 198.7 180.4 199.5 180C200.3 179.6 205.5 176.833 208 175.5" stroke="#979797" stroke-width="2" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <h4 class="title_4">предложить резюме</h4>
+                                        <!--<a href="#" class="btn btn-secondary">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 649 152" fill="none">
+										<path class="path-btn " d="M3 62.0466C3 135.498 286.74 127.397 369.812 127.397C452.884 127.397 646 119.295 646 62.0466C646 4.7978 405.414 3.17755 357.945 3.17755C310.475 3.17755 20.8012 -3.30345 20.8012 62.0466C20.8012 127.397 391.929 149 458.818 149C525.707 149 634.133 120.916 624.423 62.0466C614.713 3.17755 -94.0973 -38.4086 40.2206 115.515C79.599 153.321 875.258 197.068 579.111 3.17755" stroke="#EF7D9A" stroke-width="5"></path>
+									</svg>
+									записаться на приём
+							   </a>-->
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="form-variant__description">
+                                        Чтобы оставить заявку соискателя, укажите свои контактные данные и прикрепите резюме отдельным файлом (до 5Мб) </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hello">
+                            ПРИВЕТ,
+                        </div>
+                        <div class="input-box">
+                            <label for="name">меня зовут *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свое имя" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">моя фамилия *</label>
+                            <input type="text" name="name" id="name" placeholder="Введите свою фамилию" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">мой номер телефона *</label>
+                            <input type="tel" name="name" id="name" placeholder="введите Ваш телефон" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="name">мой email *</label>
+                            <input type="email" name="name" id="name" placeholder="Введите Email" required />
+                        </div>
+                        <div class="input-box">
+                            <label for="file">Выберите файл </label>
+                            <input class="input-file" name="file" type="file" />
+                        </div>
+                        <div class="btn-box">
+                            <input type="submit" value="Отправить" class="btn btn-secondary">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap-5.2.min.js"></script>
+    <script src="assets/js/jquery.mask.min.js"></script>
+    <script defer src="assets/js/slick.min.js"></script>
+    <script defer src="assets/js/jquery.fancybox.min.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script defer src="assets/js/custom.js"></script>
+</body>
+
+</html>
